@@ -10,84 +10,148 @@ body {
     background: #121212;
     color: #f5f5f5;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 40px 20px;
 }
 
 .container {
     width: 100%;
-    max-width: 600px;
-    background: #1e1e1e;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 750px;
+    margin: 0 auto;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 25px;
-    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 32px;
 }
 
-.input-container {
+/* -------------------- */
+/* Створення групи */
+/* -------------------- */
+
+.group-create {
     display: flex;
     gap: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
-#taskInput {
+.group-create input {
     flex: 1;
-    padding: 12px 15px;
+}
+
+/* -------------------- */
+/* Додавання задачі */
+/* -------------------- */
+
+.task-create {
+    display: grid;
+    grid-template-columns: 1fr 150px 150px 100px;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+input,
+select {
+    padding: 12px 14px;
     border: 1px solid #3a3a3a;
     border-radius: 8px;
-    background: #2a2a2a;
-    color: #ffffff;
-    font-size: 16px;
+    background: #242424;
+    color: #fff;
+    font-size: 14px;
     outline: none;
 }
 
-#taskInput:focus {
+input:focus,
+select:focus {
     border-color: #6c63ff;
 }
 
-#taskInput::placeholder {
-    color: #888;
-}
-
-#addButton {
-    padding: 12px 20px;
+button {
     border: none;
     border-radius: 8px;
+    padding: 12px 16px;
     background: #6c63ff;
     color: white;
-    font-size: 16px;
     cursor: pointer;
+    font-size: 14px;
     transition: 0.2s;
 }
 
-#addButton:hover {
+button:hover {
     background: #574fd6;
 }
 
-#taskList {
+/* -------------------- */
+/* Групи */
+/* -------------------- */
+
+.group {
+    background: #1e1e1e;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+}
+
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.group-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.delete-group {
+    background: #3a3a3a;
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+.delete-group:hover {
+    background: #e53935;
+}
+
+/* -------------------- */
+/* Задачі */
+/* -------------------- */
+
+.task-list {
     list-style: none;
+    min-height: 10px;
 }
 
 .task {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
+
+    background: #2a2a2a;
     padding: 14px;
     margin-bottom: 10px;
-    background: #2a2a2a;
+
     border-radius: 10px;
+
+    cursor: grab;
+
     transition: 0.2s;
 }
 
 .task:hover {
     background: #333333;
+}
+
+.task:active {
+    cursor: grabbing;
+}
+
+.task.dragging {
+    opacity: 0.5;
+    transform: scale(1.02);
 }
 
 .task-content {
@@ -104,27 +168,56 @@ h1 {
     accent-color: #6c63ff;
 }
 
-.task-content span {
-    font-size: 16px;
-    word-break: break-word;
+.task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.task.completed .task-content span {
+.task-text {
+    font-size: 16px;
+}
+
+.task-date {
+    font-size: 12px;
+    color: #999;
+}
+
+.task.completed .task-text {
     text-decoration: line-through;
     color: #777;
 }
 
 .delete-button {
-    border: none;
-    border-radius: 7px;
-    padding: 8px 12px;
     background: #e53935;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
+    padding: 8px 12px;
 }
 
 .delete-button:hover {
     background: #c62828;
+}
+
+/* -------------------- */
+/* Адаптація для телефону */
+/* -------------------- */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .task-create {
+        grid-template-columns: 1fr;
+    }
+
+    .group-create {
+        flex-direction: column;
+    }
+
+    .task {
+        align-items: flex-start;
+    }
+
 }
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -6,23 +7,50 @@
     <title>ToDo List</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Мій список завдань</h1>
+<div class="container">
 
-        <div class="input-container">
-            <input
-                type="text"
-                id="taskInput"
-                placeholder="Введіть завдання..."
-            >
-            <button id="addButton">Додати</button>
-        </div>
+    <h1>Мої завдання</h1>
 
-        <ul id="taskList"></ul>
+    <!-- Створення групи -->
+    <div class="group-create">
+        <input
+            type="text"
+            id="groupInput"
+            placeholder="Назва нової групи..."
+        >
+        <button id="addGroupButton">+ Група</button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Додавання завдання -->
+    <div class="task-create">
+
+        <input
+            type="text"
+            id="taskInput"
+            placeholder="Нове завдання..."
+        >
+
+        <select id="groupSelect">
+        </select>
+
+        <input
+            type="date"
+            id="dateInput"
+        >
+
+        <button id="addButton">Додати</button>
+
+    </div>
+
+    <!-- Список груп -->
+    <div id="groupsContainer"></div>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
